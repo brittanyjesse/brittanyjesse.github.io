@@ -1,0 +1,65 @@
+<html ng-app="resume">
+  <head>
+    <title>Brittany Jesse Resume</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The resume of Brittany Jesse" />
+    <meta name="keywords" content="Brittany Jesse, IT Professional, Utah, Salt Lake City" />
+    <meta name="author" content="Brittany Jesse" />
+
+    <!-- Font stuff -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Site styles -->
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body class="ng-cloak" ng-controller="MainCtrl">
+    <div id="main-container">
+      <img id="photo" src="photo.jpg" />
+
+      <section id="contact">
+        <h1>{{contact.name}}</h1>
+        <div>
+          <a ng-href="{{contact.url}}">{{contact.website}}</a> | <a ng-href="mailto:{{contact.email}}" target="_blank">{{contact.email}}</a> | <a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <h3>{{education.degree}}</h3><time>{{education.graduationDate}}</time>
+        <a ng-href="{{education.schoolUrl}}">{{education.school}}</a>
+        <ul>
+          <li ng-repeat="item in education.items" ng-bind-html="item"></li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div ng-repeat="xp in experience">
+          <h3>{{xp.jobTitle}}</h3><time>{{xp.timeRange}}</time>
+          <a ng-href="{{xp.companyUrl}}">{{xp.company}}</a>
+          <ul>
+            <li ng-repeat="achievement in xp.achievements" ng-bind-html="achievement"></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills-and-achievements">
+        <h2>Skills & Achievements</h2>
+        <ul>
+          <li ng-repeat="item in skillsAndAchievements">
+            <h3>{{item.title}}: </h3><span ng-bind-html="item.content"></span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+
+    <!-- Site script -->
+    <script src="script.js"></script>
+  </body>
+</html>
